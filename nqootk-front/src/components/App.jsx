@@ -60,8 +60,8 @@ import NavBar from './Navbar';
 				return(
 					<React.Fragment>
 						<NavBar />						
-						<header class="mastheadz">
-							<div class="container h-100">
+						<header className="mastheadz">
+							<div className="container h-100">
 								<main className="container">
 									<Counters onUpdate={this.handleUpdate}
 									onAdd={this.handleAdd} counters={this.state.counters}

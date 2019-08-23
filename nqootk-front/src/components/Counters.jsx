@@ -38,7 +38,8 @@ import Counter from './counter';
 			// };
 
 			return(
-				<table align="center" class="navdiv">
+				<table align="center" className="navdiv">
+				<tbody>
 					<tr align="center">
 						{/* <div class="navdiv"> */}
 						<td align="center">
@@ -60,7 +61,7 @@ import Counter from './counter';
 									</select>
 						</td>
 						<td align="center">
-									<h9><font color="white">العملة</font></h9>
+									<font color="white">العملة</font>
 						</td>
 
 						<td align="center">		
@@ -68,27 +69,30 @@ import Counter from './counter';
 									</input>
 						</td>
 						<td align="center">
-									<h9><font color="white">النقوط</font></h9>
+									<font color="white">النقوط</font>
 						</td>
 						<td align="center">
 									<input onSubmit={this.updateState} onKeyDown={this.handleEnter.bind(this)} type="text" id="name">			
 									</input>
 						</td>
 						<td align="center">			
-									<h9><font color="white">الاسم</font></h9>
+									<font color="white">الاسم</font>
 						</td>
 					</tr>
 					<tr>	
-						<td colspan="8">											
+						<td colSpan="8">											
 									<table dir="rtl" className="tbl">
+									<tbody>
 										{this.props.counters.map(x=>
-										<tr align="center"><td key={x.id} className="m-4">
+										<tr align="center" key={x.id}><td className="m-4">
 										<Counter key={x.id} onDelete={this.props.onDelete} counter={x} onIncrement={this.props.onIncrement} onUpdate={this.props.onUpdate}
 										onEdit={this.props.onEdit}/>
 										</td></tr>)}
+									</tbody>
 									</table>
 						</td>
 					 </tr>
+					 </tbody>
 				</table>);
 		}
 		}

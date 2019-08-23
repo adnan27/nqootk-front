@@ -55,9 +55,10 @@ class Counter extends Component{
 	render(){			
 		return(
 			<table className="navdiv2 m-2">
+			<tbody>
 				<tr>
 					{/* this.getBadgeClasses() */}
-					<td className="" colspan="4" align="center">
+					<td className="" colSpan="4" align="center">
 						<div className="nqootBar">{this.props.counter.name}&nbsp; 
 						{this.props.counter.nqoot}&nbsp; 
 						{this.props.counter.currency}</div>
@@ -97,6 +98,7 @@ class Counter extends Component{
 					Delete
 					</button> */}
 				</tr>
+			</tbody>
 			</table>
 			
 			);
