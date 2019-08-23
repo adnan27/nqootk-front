@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
-import Navbar from './NavBar'
 import Counters from './Counters';
+import NavBar from './Navbar';
+
 	class App extends Component{
-	
 		state={
 			counters:[
-				{id:1,value:5,name:"adnan jaber",nqoot:0,currency:"dollar"},
-				{id:2,value:0,name:"muhamed jaber",nqoot:0,currency:"dollar"},
-				{id:3,value:0,name:"boss boss",nqoot:0,currency:"dollar"},
-				{id:4,value:0,name:"muhammed ali",nqoot:0,currency:"dollar"}
+				{id:1,value:5,name:"عدنان جابر",nqoot:0,currency:"دولار"},
+				{id:2,value:0,name:"محمد جابر",nqoot:0,currency:"شيكل"},
+				{id:3,value:0,name:"محمد علي",nqoot:0,currency:"يورو"},
+				{id:4,value:0,name:"بهلول النجار",nqoot:0,currency:"شيكل"}
 			],
 			maxElements:4
 		};
@@ -27,8 +27,11 @@ import Counters from './Counters';
 		};
 
 		handleReset=()=>{
-		    const counters= this.state.counters.map(c=>{c.value=0;return c;});
-		    this.setState({counters});
+			
+			// this.props.name ="";
+			// this.props.nqoot="";
+		    // const counters= this.state.counters.map(c=>{c.value=0;return c;});
+		    // this.setState({counters});
 		};
 
 		handleAdd=namei=>{
@@ -53,21 +56,24 @@ import Counters from './Counters';
 		    this.setState({counters});
 		};
 
-	render(){
-
-		return(
-		<React.Fragment>
-
-        <Navbar totalCounters={this.state.counters.filter(c=>c.value>0).length}/>
-
-		<main className="container">
-		<Counters onUpdate={this.handleUpdate} onAdd={this.handleAdd} counters={this.state.counters} onReset={this.handleReset}  onDelete={this.handleDelete} onIncrement={this.handleIncrement} onDelete={this.handleDelete} onEdit={this.handleEdit}/>
-		</main>
-		
-	    </React.Fragment>
-		);
+		render(){
+				return(
+					<React.Fragment>
+						<NavBar />						
+						<header class="mastheadz">
+							<div class="container h-100">
+								<main className="container">
+									<Counters onUpdate={this.handleUpdate}
+									onAdd={this.handleAdd} counters={this.state.counters}
+									onReset={this.handleReset}  onDelete={this.handleDelete}
+									onIncrement={this.handleIncrement}
+										onEdit={this.handleEdit}/>
+								</main>		
+							</div>
+						</header>	
+						
+					</React.Fragment>
+				);
+		}
 	}
-
-	}
-
 export default App;

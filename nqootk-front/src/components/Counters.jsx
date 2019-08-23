@@ -3,93 +3,93 @@ import Counter from './counter';
 
 		class Counters extends Component{
 		state={
-		name:"",
-		currency:"",
-		nqoot:0
+			name:"",
+			currency:"",
+			nqoot:0
 		}
 
 		updateState=()=>{
-		const name=document.getElementById("name").value;
-		const currency=document.getElementById("currency").value;
-		const nqoot=document.getElementById("nqoot").value;
-		this.props.onAdd([name,currency,nqoot]);
-		document.getElementById("name").focus();
+			const name=document.getElementById("name").value;
+			const currency=document.getElementById("currency").value;
+			const nqoot=document.getElementById("nqoot").value;
+			this.props.onAdd([name,currency,nqoot]);
+			document.getElementById("name").focus();
 		};
 
 		handleEnter(event){
-		if (event.keyCode === 13 && event.target.id=="name" ) {
-			document.getElementById("nqoot").focus();
-		}else if(event.keyCode === 13 && event.target.id=="nqoot"){
-			document.getElementById("currency").focus();
-		}else if(event.keyCode === 13 && event.target.id=="currency"){
-			document.getElementById("update").focus();
-		}
+				if (event.keyCode === 13 && event.target.id ==="name" ) {
+					document.getElementById("nqoot").focus();
+				}else if(event.keyCode === 13 && event.target.id ==="nqoot"){
+					document.getElementById("currency").focus();
+				}else if(event.keyCode === 13 && event.target.id ==="currency"){
+					document.getElementById("update").focus();
+			}
 		};
 
 		render(){
+			// const divStyle = {
+			// color: 'blue',
+			// background: '#ADD8E6',
+			// };
 
-			const divStyle = {
-			color: 'blue',
-			background: '#ADD8E6',
-			};
-
-			const textBoxStyle = {
-			direction:'RTL',
-			background: '#ADD8E6',
-			};
+			// const textBoxStyle = {
+			// direction:'RTL',
+			// background: '#ADD8E6',
+			// };
 
 			return(
-				<div align="center">
+				<table align="center" class="navdiv">
+					<tr align="center">
+						{/* <div class="navdiv"> */}
+						<td align="center">
+									<button onClick={this.props.onReset} className="btn btn-primary bt-sm m-2">
+									مسح
+									</button>
+						</td>
+						<td align="center">
+									<button id="update" onClick={this.updateState} className="btn btn-primary bt-sm m-2">
+									اضافة
+									</button>
+						</td>
+						
+						<td align="center">
+									<select id="currency" onKeyDown={this.handleEnter.bind(this)}>
+										<option defaultValue="shekel">شيكل</option>
+										<option value="dollar">دولار</option>
+										<option value="euro">يورو</option>
+									</select>
+						</td>
+						<td align="center">
+									<h9><font color="white">العملة</font></h9>
+						</td>
 
-				<button 
-				onClick={this.props.onReset} 
-				className="btn btn-primary bt-sm m-2">
-				Reset
-				</button>
-
-				<button 
-				id="update"
-				onClick={
-					this.updateState
-				} 
-				className="btn btn-primary bt-sm m-2">
-				Add
-				</button>
-
-				<select id="currency" onKeyDown={this.handleEnter.bind(this)}>
-				<option defaultValue="shekel">shekel</option>
-				<option value="dollar">dollar</option>
-				<option value="euro">euro</option>
-				</select>
-                
-				<input 
-				style={textBoxStyle}
-				onSubmit={this.updateState} 
-				onKeyDown={this.handleEnter.bind(this)}
-				type="text" 
-				id="nqoot">
-				</input>
-				
-				<h9>  :الاسم:   </h9>
-				<input 
-				style={textBoxStyle}
-				onSubmit={this.updateState} 
-				onKeyDown={this.handleEnter.bind(this)}
-				type="text" 
-				id="name">
-				
-				</input>
-                <h9>   نقوط   </h9>
-				{this.props.counters.map(x=>
-				<li style={divStyle} key={x.id} className="m-1">
-				<Counter key={x.id}
-				onDelete={this.props.onDelete} 
-				counter={x} 
-				onIncrement={this.props.onIncrement}
-				onUpdate={this.props.onUpdate}
-				onEdit={this.props.onEdit}/>
-				</li>)}
-				</div>);
+						<td align="center">		
+									<input  onSubmit={this.updateState} onKeyDown={this.handleEnter.bind(this)} type="text" id="nqoot">
+									</input>
+						</td>
+						<td align="center">
+									<h9><font color="white">النقوط</font></h9>
+						</td>
+						<td align="center">
+									<input onSubmit={this.updateState} onKeyDown={this.handleEnter.bind(this)} type="text" id="name">			
+									</input>
+						</td>
+						<td align="center">			
+									<h9><font color="white">الاسم</font></h9>
+						</td>
+					</tr>
+					<tr>	
+						<td colspan="8">											
+									<table dir="rtl" className="tbl">
+										{this.props.counters.map(x=>
+										<tr align="center"><td key={x.id} className="m-4">
+										<Counter key={x.id} onDelete={this.props.onDelete} counter={x} onIncrement={this.props.onIncrement} onUpdate={this.props.onUpdate}
+										onEdit={this.props.onEdit}/>
+										</td></tr>)}
+									</table>
+						</td>
+					 </tr>
+				</table>);
 		}
 		}
 

@@ -2,11 +2,11 @@ import React, {Component} from 'react';
 
 class Counter extends Component{
     state = {
-	    color: 'blue',
+	    color: 'purple',
 		update:false,
 		name:"",
 		nqoot:"",
-		curr:"shekel"
+		curr:"شيكل"
 	}
 		
 	onEnter = () => {
@@ -28,6 +28,13 @@ class Counter extends Component{
 		this.props.onUpdate(counter);
 	}
 
+	// onDeleteClick=()=>{
+	// 	this.setState({ update:false});
+	// 	this.onLeave();
+	// 	const counter=this.props.counter;
+	// 	this.props.onUpdate(counter);
+	// }
+
 	wrapperFunction = () => {
 		this.onEnter();
 	    this.onUpdateName();
@@ -44,73 +51,60 @@ class Counter extends Component{
 	updateCurrency(event){
 		this.props.counter.currency=event.target.value;
 	}
+	
+	render(){			
+		return(
+			<table className="navdiv2 m-2">
+				<tr>
+					{/* this.getBadgeClasses() */}
+					<td className="" colspan="4" align="center">
+						<div className="nqootBar">{this.props.counter.name}&nbsp; 
+						{this.props.counter.nqoot}&nbsp; 
+						{this.props.counter.currency}</div>
+					</td>
+				</tr>
+				<tr>	
+					<td>
+						<input onChange={this.updateName.bind(this)}  
+						className="inputText"
+						onClick={this.wrapperFunction} type="text" id="name"
+						defaultValue={this.props.counter.name}>
+						</input>
+					</td>
+					<td>
+						<input onChange={this.updateNqoot.bind(this)} 
+						className="inputText"
+						onClick={this.wrapperFunction} type="text" id="nqoot"
+						defaultValue={this.props.counter.nqoot}>
+						</input>
+					</td>
+					<td>
+						<select onChange={this.updateCurrency.bind(this)}
+						id="currency"
+						className="inputText"
+						onClick={this.wrapperFunction}>
+						<option defaultValue={this.props.counter.currency}>{this.props.counter.currency}</option>
+						<option value="dollar">دولار</option>
+						<option value="shekel">شيكل</option>
+						<option value="euro">يورو</option>
+						</select>
+					</td>	
+						
+					{this.state.update ? <button onClick={this.onUpdateClick} className="btn btn-secondary btn-sm m-2">تعديل</button> :null} 
+					{this.state.update ? <button onClick={()=>this.props.onDelete(this.props.counter.id)} className="btn btn-secondary btn-sm m-2">حذف</button> :null}
 
-		
-	render(){
+					{/* <button onClick={()=>this.props.onDelete(this.props.counter.id)} className="btn btn-danger btn-sm m-2">
+					Delete
+					</button> */}
+				</tr>
+			</table>
 			
-		return(<div  className="badge badge-primary m-2" >
-			<span className={this.getBadgeClasses()}>{this.formatCount()}</span>
-
-			<span className={this.getBadgeClasses()}>{this.props.counter.name}</span>
-				
-			<select onChange={this.updateCurrency.bind(this)}
-			id="currency"
-			style={{ backgroundColor: this.state.color }} 
-			onClick={this.wrapperFunction}>
-			<option defaultValue={this.props.counter.currency}>{this.props.counter.currency}</option>
-			<option value="dollar">dollar</option>
-			<option value="shekel">shekel</option>
-			<option value="euro">euro</option>
-			</select>
-
-			<input 
-			onChange={this.updateNqoot.bind(this)}
-			style={{ backgroundColor: this.state.color }} 
-			onClick={this.wrapperFunction}
-			type="text"
-			id="nqoot"
-			defaultValue={this.props.counter.nqoot}
-			>
-			</input>
-
-			<input 
-			onChange={this.updateName.bind(this)}
-			style={{ backgroundColor: this.state.color }} 
-			onClick={this.wrapperFunction}
-			type="text"
-			id="name"
-			defaultValue={this.props.counter.name}
-			>
-			</input>
-				
-				
-			{this.state.update ? <button
-			onClick={this.onUpdateClick}
-			className="btn btn-secondary btn-sm m-2">
-			Update</button> :null} 
-				
-			<button
-			onClick={()=>this.props.onIncrement(this.props.counter)} 
-			className="btn btn-secondary btn-sm">
-			increment
-			</button> 
-
-			<button 
-			onClick={()=>this.props.onDelete(this.props.counter.id)}
-			className="btn btn-danger btn-sm m-2">
-			Delete
-			</button>
-			</div>);
-		}
-
-		formatCount(){
-			const {value}=this.props.counter;
-			return value==0 ? "Zero" : value;
-
+			);
+			
 		}
 		getBadgeClasses(){
 			let classColors = "badge m-2 badge-";
-			classColors += this.props.counter.value == 0 ? "warning" : "primary";
+			classColors += this.props.counter.value === 0 ? "warning" : "primary";
 			return classColors;
 		}
 		}
