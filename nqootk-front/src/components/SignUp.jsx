@@ -42,7 +42,7 @@ import React, {Component} from 'react';
 							</label>
 							<label className="form-check form-check-inline">
 							<input className="form-check-input" type="radio" name="gender" value="option2"></input>
-							<span className="form-check-label"> انثى</span>
+							<span className="form-check-label"> انثى </span>
 							</label>
 						</div>
 						<div className="form-row">

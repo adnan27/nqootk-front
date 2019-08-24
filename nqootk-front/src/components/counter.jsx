@@ -109,6 +109,7 @@ class Counter extends Component{
 			classColors += this.props.counter.value === 0 ? "warning" : "primary";
 			return classColors;
 		}
+		
 		}
 
 	export default Counter;

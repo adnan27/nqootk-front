@@ -13,7 +13,7 @@ import React, {Component} from 'react';
 						</div>
 						<div className="col-lg-8 align-self-baseline">
 							<p className="text-white-75 font-weight-light mb-5">اهلا وسهلا بكم في موقع نقوطك, الذي بدوره يسهل على المستخدمين تخزين اسماء المناسبات او الاعراس التي قاموا بحضورها بالاضافة الى تسجيل مبلغ النقوط لكل مناسبة.</p>
-							<a className="btn btn-primary btn-xl js-scroll-trigger" href="#about">تسدجيل الدخول</a>
+							<a className="btn btn-primary btn-xl js-scroll-trigger" href="#about"> تسدجيل الدخول </a>
 						</div>
 					</div>
 				</div>

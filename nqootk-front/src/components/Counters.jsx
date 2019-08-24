@@ -44,12 +44,12 @@ import Counter from './counter';
 						{/* <div class="navdiv"> */}
 						<td align="center">
 									<button onClick={this.props.onReset} className="btn btn-primary bt-sm m-2">
-									مسح
+									 مسح
 									</button>
 						</td>
 						<td align="center">
 									<button id="update" onClick={this.updateState} className="btn btn-primary bt-sm m-2">
-									اضافة
+									 اضافة
 									</button>
 						</td>
 						

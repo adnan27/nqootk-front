@@ -38,6 +38,7 @@ import App from './App';
 					</div>
 				</nav>
 			);
+			
 	}
 
 	}
