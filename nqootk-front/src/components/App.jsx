@@ -6,7 +6,7 @@ import Axios from 'axios';
 	class App extends Component{
 		state={
 			counters:[
-				{id:1,value:5,name:"adnan jaber",nqoot:100,currency:"shekels"},
+				{id:1,value:77,name:"adnan jaber",nqoot:100,currency:"shekels"},
 				{id:2,value:0,name:"mohhamad jaber",nqoot:900,currency:"shekels"},
 				{id:3,value:0,name:"abd dozan",nqoot:200,currency:"boosat"},
 				{id:4,value:0,name:"fafe",nqoot:33,currency:"euro"}
