@@ -1,17 +1,25 @@
 import React, {Component} from 'react';
 import Counters from './Counters';
 import NavBar from './Navbar';
+import Axios from 'axios';
 
 	class App extends Component{
 		state={
 			counters:[
-				{id:1,value:5,name:"عدنان جابر",nqoot:0,currency:"دولار"},
-				{id:2,value:0,name:"محمد جابر",nqoot:0,currency:"شيكل"},
-				{id:3,value:0,name:"محمد علي",nqoot:0,currency:"يورو"},
-				{id:4,value:0,name:"بهلول النجار",nqoot:0,currency:"شيكل"}
+				{id:1,value:5,name:"adnan jaber",nqoot:100,currency:"shekels"},
+				{id:2,value:0,name:"mohhamad jaber",nqoot:900,currency:"shekels"},
+				{id:3,value:0,name:"abd dozan",nqoot:200,currency:"boosat"},
+				{id:4,value:0,name:"fafe",nqoot:33,currency:"euro"}
 			],
-			maxElements:4
+			maxElements:4,
+			serverData:[]
 		};
+
+        componentDidMount(){
+		 Axios.get('http://localhost:8080/nqoot').then(res=>{
+			 console.log(res);
+			 this.setState({serverData:res})});
+        }
 
 		handleDelete= countId=>{
 			const counters=this.state.counters.filter(c=>c.id!==countId);
@@ -67,11 +75,10 @@ import NavBar from './Navbar';
 									onAdd={this.handleAdd} counters={this.state.counters}
 									onReset={this.handleReset}  onDelete={this.handleDelete}
 									onIncrement={this.handleIncrement}
-										onEdit={this.handleEdit}/>
+									onEdit={this.handleEdit}/>
 								</main>		
 							</div>
 						</header>	
-						
 					</React.Fragment>
 				);
 		}
