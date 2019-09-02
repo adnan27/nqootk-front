@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
-import resultRecord from './resultRecord';
+import NqootRecord from './NqootRecord';
 
-	class recordInsertion extends Component{
-			state={
+		class NqootList extends Component{
+		state={
 			name:"",
 			currency:"",
 			nqoot:0
@@ -28,17 +28,17 @@ import resultRecord from './resultRecord';
 
 		render(){
 			return(
-				<table align="center" class="navdiv">
+				<table align="center" className="navdiv">
+				<tbody>
 					<tr align="center">
-						{/* <div class="navdiv"> */}
 						<td align="center">
 									<button onClick={this.props.onReset} className="btn btn-primary bt-sm m-2">
-									مسح
+									 مسح
 									</button>
 						</td>
 						<td align="center">
 									<button id="update" onClick={this.updateState} className="btn btn-primary bt-sm m-2">
-									اضافة
+									 اضافة
 									</button>
 						</td>
 						
@@ -50,7 +50,7 @@ import resultRecord from './resultRecord';
 									</select>
 						</td>
 						<td align="center">
-									<h9>العملة</h9>
+									<font color="white">العملة</font>
 						</td>
 
 						<td align="center">		
@@ -58,28 +58,31 @@ import resultRecord from './resultRecord';
 									</input>
 						</td>
 						<td align="center">
-									<h9>النقوط</h9>
+									<font color="white">النقوط</font>
 						</td>
 						<td align="center">
 									<input onSubmit={this.updateState} onKeyDown={this.handleEnter.bind(this)} type="text" id="name">			
 									</input>
 						</td>
 						<td align="center">			
-									<h9>الاسم</h9>
+									<font color="white">الاسم</font>
 						</td>
 					</tr>
 					<tr>	
-						<td colspan="8">											
+						<td colSpan="8">											
 									<table dir="rtl" className="tbl">
-										{this.props.recordInsertion.map(x=>
-										<tr align="center"><td key={x.id} className="m-4">
-										<recordInsertion key={x.id} onDelete={this.props.onDelete} resultRecord={x} onIncrement={this.props.onIncrement} onUpdate={this.props.onUpdate}
-										onEdit={this.props.onEdit}/>
+									<tbody>
+                                       	{this.props.data.map(x=>
+										<tr align="center" key={x.payerNum}><td className="m-4">
+										<NqootRecord key={x.payerName} onDelete={this.props.onDelete} record={x} onUpdate={this.props.onUpdate}/>
 										</td></tr>)}
+									</tbody>
 									</table>
 						</td>
 					 </tr>
+					 </tbody>
 				</table>);
 		}
 		}
-export default recordInsertion;
+
+export default NqootList;
